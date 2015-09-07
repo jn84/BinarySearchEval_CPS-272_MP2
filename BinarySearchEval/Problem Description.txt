@@ -1,0 +1,33 @@
+[1] For a random list of integers, the maximum number of comparisons required to find a target value by using the binary search is 2(1+ int(log2n)). 
+This result can be tested experimentally. 
+Modify the function binarySearch( ) to return the number of comparisons the algorithm 
+executes in a successful search and the negative of the number of comparisons required for an unsuccessful search. 
+We provide the prototype for binarySearch( ):
+
+template <typename T>
+int binarySearch(const T arr[], int first, int last, const T& target);
+
+Write a program that declares an integer array table of ARRSIZE integers and two integer variables sumBinSearchSuccess and sumBinSearchFail.
+const int ARRSIZE = 50000;
+const int RANDOMVALUES = 100000, RANDOMLIMIT = 200000;
+int table[ARRSIZE];
+int sumBinSearchSuccess = 0, sumBinSearchFail = 0, success = 0;
+
+After initializing table with ARRSIZE random integers in the range from 0 to RANDOMLIMIT - 1, apply the selection sort to table. 
+In a loop that executes RANDOMVALUES times, generate a random target in the range from 0 to RANDOMLIMIT – 1,
+and search for it in table using the modified binary search.
+If the search is successful, increment the integer counter success, and increment sumBinSearchSuccess
+by the number of comparisons returned from binarySearch( ); otherwise,
+increment sumBinSearchFail by the negative of the number of comparisons returned from binarySearch( ).
+At the conclusion of the loop, output the following:
+
+Empirical average case: 
+sumBinSearchSuccess / static_cast<double>(success)
+Empirical worst case: 
+sumBinSearchFail / static_cast<double>(RANDOMVALUES – success))
+Theoretical bound for worse case:
+2.0 * (1.0 + int(log(static_cast<double>(ARRSIZE)) / log(2.0)))
+
+Turn in your program and the results. Study your results:
+1. By how many iterations do the average and worse cases differ?
+2. What is the difference between Empirical and Theoretical worst cases?

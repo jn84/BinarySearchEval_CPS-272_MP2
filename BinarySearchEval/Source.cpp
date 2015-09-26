@@ -6,7 +6,6 @@
 
 #include <iostream>
 #include <ctime>
-#include <algorithm>
 
 using namespace std;
 

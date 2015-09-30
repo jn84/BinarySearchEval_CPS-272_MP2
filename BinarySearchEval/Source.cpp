@@ -2,6 +2,10 @@
 //       Name: Jeremy Nims
 // Assignment: MP2 - Part 1 - Binary Search Test
 //     Course: CPS 272, Wed 5:30
+//
+//  CORRECTED: Somehow, I overlooked sorting the list. Once sorted,
+//             everything worked.
+//  
 //////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
@@ -41,8 +45,8 @@ void main()
             success++;
         }
         else if (searchResult < 0)
-            sumBinSearchFail += -1 * searchResult; // add the negative of the result
-    }
+            sumBinSearchFail += -1 * searchResult; 
+        }
 
     cout << "Empirical average case: "
         << (sumBinSearchSuccess / static_cast<double>(success))
@@ -81,7 +85,9 @@ int binarySearch(const T arr[], int first, int last, const T& target)
             last = mid - 1;
         }
     }
-    return comparisons *= -1;  // failure (return the negative of comparisons)
+    // You said in class to just return -1, but if we do that, we don't 
+    // know how many comparisons there were and the program doesn't work.
+    return comparisons *= -1;
 }
 
 void populateArray(int arr[], int sz)
